@@ -1,5 +1,6 @@
 package Patterns;
 
+import org.checkerframework.checker.units.qual.A;
 import org.junit.*;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -15,7 +16,7 @@ public class AutoTestHW {
     }
 
     @Test
-    public void test_checkFunctional(){
+    public void test_checkFunctional() throws InterruptedException {
         PageObject po = new PageObject();
         // 3.2
         po.getRandomNameButton().click();
@@ -64,7 +65,7 @@ public class AutoTestHW {
         Assert.assertEquals(
                 "Email address dont match",
                 nameOfEmail,
-                po.getFieldToLetter().getAttribute("textContent")
+                po.getFieldToLetter().getText()
         );
         Assert.assertEquals(
                 "Email subject dont match",
@@ -78,17 +79,38 @@ public class AutoTestHW {
         );
         // 3.14
         po.getReplyButton().click();
-        PageObject.waitForVisibility(po.getSendButton(), 10);
+        Thread.sleep(3000);
+        PageObject.waitForVisibility(po.getSendButton(), 5);
         po.getFieldTextSendForm().sendKeys("Test2");
         po.getSendButton().click();
         // 3.15
         PageObject.waitForVisibility(po.getBackButton(), 10).click();
         // 3.16
+        PageObject.waitForVisibility(po.getWriteButton(), 10);
+        Assert.assertEquals(
+                "Subject does not match",
+                "Re: Test",
+                po.getNewLetterSubject().getAttribute("textContent")
+        );
+        PageObject.waitForVisibility(po.getNewLetterSubject(), 10).click();
+        // 3.17
+        PageObject.waitForVisibility(po.getReplyButton(), 10);
+        Assert.assertEquals(
+                "Text does not match",
+                "Test2",
+                po.getFieldTextLetter().getText()
+        );
+        // 3.18
+        po.getDeleteMailButton().click();
+        PageObject.waitForVisibility(po.getConfirmMailDeleteButton(), 10).click();
+        // 3.19
+        PageObject.waitForVisibility(po.getDeleteAll_Letters(), 10);
+        Assert.assertFalse(Singleton.getDriver().getPageSource().contains("Re: Test"));
     }
 
-//    @AfterClass
-//    public static void tearDown(){
-//        Singleton.quit();
-//    }
+    @AfterClass
+    public static void tearDown(){
+        Singleton.quit();
+    }
 }
 

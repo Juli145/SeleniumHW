@@ -60,7 +60,7 @@ public class PageObject {
     @FindBy(css = "#subject")
     private WebElement fieldSubjectSendForm;
 
-    @FindBy(css = "#text")
+    @FindBy(id = "text")
     private WebElement fieldTextSendForm;
 
     @FindBy(css = "#container-body > div > div.inbox > div.mail > div > div.from.col-9.col-md-4")
@@ -83,6 +83,15 @@ public class PageObject {
 
     @FindBy(css = "#back")
     private WebElement backButton;
+
+    @FindBy(css = "#confirm_mail")
+    private WebElement confirmMailDeleteButton;
+
+    @FindBy(css = "#delete")
+    private WebElement deleteAll_Letters;
+
+    @FindBy(xpath = "//*[@id=\"container-body\"]/div/div[1]/div[2]/div/div[3]")
+    private WebElement newLetterSubject;
 
     public static WebElement waitForVisibility(WebElement element, int timeOfWait, int... timeOfTryOut) {
         WebElement webElement = null;
