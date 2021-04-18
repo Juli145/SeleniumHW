@@ -3,6 +3,7 @@ package Patterns;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -38,7 +39,7 @@ public class PageObject {
     @FindBy(css = "#modal-settings > div > form > div.modal-body > div:nth-child(2) > input")
     private WebElement saveButton;
 
-    @FindBy(xpath = "//*[@id=\"modal-settings\"]/div/form/div[2]/div/button")
+    @FindBy(xpath = "/html/body/div[4]/div/form/div[2]/div/button")
     private WebElement cross;
 
     @FindBy(css = "#secret-address")
@@ -47,8 +48,41 @@ public class PageObject {
     @FindBy(css = "#container-body > div > div.inbox > div > span")
     private WebElement stringWaitingForNewLetters;
 
-    @FindBy(xpath = "/html/body/div[8]/div[1]/div[2]/div[2]/button")
+    @FindBy(css = "#compose")
     private WebElement writeButton;
+
+    @FindBy(css = "#submit")
+    private WebElement sendButton;
+
+    @FindBy(css = "#to")
+    private WebElement fieldToSendForm;
+
+    @FindBy(css = "#subject")
+    private WebElement fieldSubjectSendForm;
+
+    @FindBy(css = "#text")
+    private WebElement fieldTextSendForm;
+
+    @FindBy(css = "#container-body > div > div.inbox > div.mail > div > div.from.col-9.col-md-4")
+    private WebElement newLetter;
+
+    @FindBy(css = "#delete_mail")
+    private WebElement deleteMailButton;
+
+    @FindBy(css = "#info > div.row.row-info.no-gutters > div.col.d-flex.mb-10 > span")
+    private WebElement fieldToLetter;
+
+    @FindBy(css = "#info > div.subject.mb-20")
+    private WebElement fieldSubjectLetter;
+
+    @FindBy(css = "#info > div.overflow-auto.mb-20")
+    private WebElement fieldTextLetter;
+
+    @FindBy(css = "#reply")
+    private WebElement replyButton;
+
+    @FindBy(css = "#back")
+    private WebElement backButton;
 
     public static WebElement waitForVisibility(WebElement element, int timeOfWait, int... timeOfTryOut) {
         WebElement webElement = null;
