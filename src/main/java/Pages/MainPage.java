@@ -1,6 +1,7 @@
-package Patterns;
+package Pages;
 
 import Core.DriverConfig;
+import Interfaces.IMainPage;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,11 +11,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 @Getter
-public class PageObject {
+public class MainPage implements IMainPage {
 
     WebDriver driver;
 
-    public PageObject() {
+    public MainPage() {
         PageFactory.initElements(DriverConfig.getDriver(), this);
     }
 

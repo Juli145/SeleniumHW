@@ -1,6 +1,6 @@
 package Patterns;
 
-import org.checkerframework.checker.units.qual.A;
+import Core.DriverConfig;
 import org.junit.*;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -8,11 +8,11 @@ import org.openqa.selenium.interactions.Actions;
 
 public class AutoTestHW {
 
-    Actions action = new Actions(Singleton.getDriver());
+    Actions action = new Actions(DriverConfig.getDriver());
 
     @BeforeClass
     public static void setUp(){
-        Singleton.initialize();
+        DriverConfig.initialize();
     }
 
     @Test
@@ -36,7 +36,7 @@ public class AutoTestHW {
         // 3.7
         WebElement element = PageObject.waitForVisibility(po.getStringWaitingForNewLetters(), 10);
         Assert.assertTrue(
-                "Dropdown is not visible",
+                "Settings are not closed",
                 element.isDisplayed()
         );
         // 3.8
@@ -105,12 +105,12 @@ public class AutoTestHW {
         PageObject.waitForVisibility(po.getConfirmMailDeleteButton(), 10).click();
         // 3.19
         PageObject.waitForVisibility(po.getDeleteAll_Letters(), 10);
-        Assert.assertFalse(Singleton.getDriver().getPageSource().contains("Re: Test"));
+        Assert.assertFalse(DriverConfig.getDriver().getPageSource().contains("Re: Test"));
     }
 
     @AfterClass
     public static void tearDown(){
-        Singleton.quit();
+        DriverConfig.quit();
     }
 }
 

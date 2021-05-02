@@ -1,9 +1,9 @@
-package Patterns;
+package Core;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public  class Singleton {
+public  class DriverConfig {
     public static WebDriver driver = null;
     public static String browserName = "chrome";
 
@@ -20,7 +20,6 @@ public  class Singleton {
     public static void initialize() {
         getDriver();
         driver.manage().window().maximize();
-        driver.get("https://tempmail.plus/ru/");
     }
 
     public static void quit(){
