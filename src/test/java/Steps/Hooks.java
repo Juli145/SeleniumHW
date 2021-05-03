@@ -9,8 +9,8 @@ public class Hooks {
         DriverConfig.initialize();
     }
 
-    @After
-    public void afterScenario(){
-        DriverConfig.quit();
-    }
+//    @After
+//    public void afterScenario(){
+//        DriverConfig.quit();
+//    }
 }

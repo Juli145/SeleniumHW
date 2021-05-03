@@ -10,10 +10,21 @@ public interface IMainPage extends IPage{
     WebElement getGetEmail();
     WebElement getSettingsButton();
     WebElement getTenMinButton();
-    static void waitForVisibility(WebElement tenMinButton, int i) {
-    }
     WebElement getSecretAddress();
     WebElement getStringWaitingForNewLetters();
     WebElement getWriteButton();
     WebElement getCross();
+    WebElement getSendButton();
+    WebElement getFieldToSendForm();
+    WebElement getFieldSubjectSendForm();
+    WebElement getFieldTextSendForm();
+    WebElement getNewLetter();
+    WebElement getDeleteMailButton();
+    WebElement getFieldToLetter();
+    WebElement getFieldSubjectLetter();
+    WebElement getFieldTextLetter();
+    WebElement getReplyButton();
+    WebElement getBackButton();
+    WebElement getNewLetterSubject();
+    WebElement getConfirmMailDeleteButton();
 }
